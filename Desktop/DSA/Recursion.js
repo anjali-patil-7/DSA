@@ -48,6 +48,17 @@ function fibo(n) {
 }
 console.log(fibo(5));
 
+
+//5.5......................fibnocci sequenses
+function fibnocci(n) {
+  if (n === 0) return 0;
+  if (n === 1) return 1;
+  return fibnocci(n - 1) + fibnocci(n - 2);
+}
+for (let i = 0; i < 10; i++) {
+  console.log(fibnocci(i));
+}
+
 //6...................reverse the string
 function revstr(str) {
   if (str.length <= 1) return str;
@@ -103,3 +114,21 @@ function binarySearch(arr, target, low = 0, high = arr.length - 1) {
 console.log(binarySearch([10, 20, 30, 40, 50], 30)); // Output: 2
 console.log(binarySearch([1, 3, 5, 7], 6));          // Output: -1
 
+
+
+//11................find the prime numbers upto n 
+function isprime(n, i = 2) {
+  if (n < 2) return false;
+  if (i * i > n) return true;
+  if (n % i === 0) return false;
+  return isprime(n, i + 1);
+}
+function printprime(n, curr = 2) {
+  if (curr > n) return;
+  if (isprime(curr)) console.log(curr);
+  printprime(n, curr + 1);
+}
+printprime(30);
+
+
+//12.................

@@ -22,6 +22,12 @@ const list = new Linklist()
 console.log('list isempty',list.isEmpty())
 console.log('list getsize', list.getsize())
 
+///.................. Convert array to singly linked list
+  fromArray(arr) {
+    arr.forEach(value => this.prepend(value));
+  }
+
+
 //2...................prepend the values (add a node at begining)
 class Node {
   constructor(value) {
@@ -73,7 +79,7 @@ append(value){
     this.size++
 }
 
-//4...............insert inbtw the two nodes
+//4...............insert a node inbtw the two nodes
     
    insert(value,index){
          if(index<0 || index>this.size){
