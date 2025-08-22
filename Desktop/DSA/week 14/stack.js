@@ -198,3 +198,24 @@ out.push(30)
 out.print()
 console.log(out.pop())
 out.print()
+
+
+
+
+//**********************************LOGICAL QUS******************************************************************************* */
+//1. using stack check the string is palindrome or not 
+
+function check(str){
+    let stack = []
+   for(let char of str){
+       stack.push(char)
+   }
+   for(let char of str){
+       if(char !== stack.pop()) return false
+   }
+   return true
+}
+console.log(check("madam"))
+console.log(check("anjali"))
+
+//2...................

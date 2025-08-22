@@ -72,3 +72,40 @@ console.log(
     { name: "C", age: 22 },
   ])
 );
+
+
+
+///5......................smallest element from the array
+let arr = [45, 12, 89, 33, 22];
+function bla(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let min = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[min]) {
+        min = j;
+      }
+    }
+    [arr[i], arr[min]] = [arr[min], arr[i]];
+  }
+  return {
+    soretedarr: arr,
+    length: arr.length,
+  };
+}
+let result = bla(arr);
+console.log("sorted array==>>", result);
+console.log("smallest element==>", result.soretedarr[0]);
+
+
+//6................smallest element without swapping
+let arr = [8, 2, 5, 6, 77, 4, 3];
+function smallest(arr) {
+  let minIndex = 0;
+  for (let j = 1; j < arr.length; j++) {
+    if (arr[j] < arr[minIndex]) {
+      minIndex = j;
+    }
+  }
+  return arr[minIndex];
+}
+console.log(smallest(arr));

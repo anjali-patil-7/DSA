@@ -93,4 +93,60 @@ function length(str) {
 }
 console.log(length(["banana", "apple", "kiwi", "cherry"]));
 
-///6....................
+
+///6....................sort the array of string
+let str = ["banana", "apple", "cherry", "date"];
+function chara(str) {
+  for (let i = 0; i < str.length - 1; i++) {
+    let swap = false;
+    for (let j = 0; j < str.length - i - 1; j++) {
+      if (str[j] > str[j + 1]) {
+        [str[j], str[j + 1]] = [str[j + 1], str[j]];
+        swap = true;
+      }
+    }
+    if (!swap) break;
+  }
+  return str;
+}
+console.log(chara(str));                                   //[ 'apple', 'banana', 'cherry', 'date' ]
+
+
+
+///7.........................largest elements in array(1st largest, 2ndlargest, 3rd......)
+let arr = [10, 3, 76, 34, 23];
+function chara(arr) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = 0; j < arr.length - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      }
+    }
+  }
+  return arr;
+}
+let result = chara(arr);
+console.log(result);
+console.log(result[result.length - 1]);
+console.log(result[result.length - 3]);
+console.log(result[result.length - 5]);
+
+
+
+///8.............................largest elements in array of string
+let str = ["banana", "apple", "cherry", "date"];
+function chara(str) {
+  for (let i = 0; i < str.length - 1; i++) {
+    for (let j = 0; j < str.length - i - 1; j++) {
+      if (str[j].length > str[j + 1].length) {
+        [str[j], str[j + 1]] = [str[j + 1], str[j]];
+      }
+    }
+  }
+  return str;
+}
+const result = chara(str);
+console.log(result);
+console.log(result[result.length - 1]);
+console.log(result[result.length - 3]);
+
