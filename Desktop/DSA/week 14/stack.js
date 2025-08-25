@@ -63,8 +63,8 @@ class stack{
         this.queue.push(x)
         
         let size = this.queue.length
-        for(let i=0; i<size-1; i++){
-            this.queue.push(this.queue.shift())
+        for(let i=0; i<size-1; i++){        //rotate queue
+            this.queue.push(this.queue.shift()) 
         }
     }
     pop(){

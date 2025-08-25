@@ -13,7 +13,7 @@ class Queue {
     }
     return this.items.shift();
   }
-  peek() {
+  front() {
     return this.items[0];
   }
   isEmpty() {
@@ -154,3 +154,89 @@ out.enqueue(30);
 out.print();
 console.log(out.dequeue());
 out.print();
+
+
+
+////5....................................CircularQueue
+class circularqueue{
+    constructor(size){
+        this.size = size
+        this.queue = new Array(size)
+        this.front = -1
+        this.rear = -1
+    }
+    //check if queue is full
+    isFull(){
+        return (this.front === 0 && this.rear === this.size-1) || (this.rear + 1) % this.size === this.front
+    }
+    //check if queue is empty
+    isEmpty(){
+        return this.front === -1
+    }
+    //add elements
+    enqueue(item){
+        if(this.isFull()){
+            console.log("queue is full")
+            return 
+        }
+        if(this.isEmpty()){
+            this.front = 0
+            this.rear = 0
+        }else{
+            this.rear = (this.rear + 1) % this.size //circular increment
+        }
+        this.queue[this.rear] = item
+        console.log(item,"added")
+    }
+    //remove element
+    dequeue(){
+        if(this.isEmpty()){
+            console.log("queue is empty")
+            return
+        }
+        let removed = this.queue[this.front]
+        //if only one element was present
+        if(this.front === this.rear){
+            this.front = -1
+            this.rear = -1
+        }else{
+            this.front = (this.front + 1) % this.size
+        }
+        console.log(removed,"removed")
+        return removed
+    }
+    //see front element
+    getFront(){
+        if(this.isEmpty()){
+            console.log("queue is empty")
+            return 
+        }
+        console.log("front",this.queue[this.front])
+    }
+    //see rear element
+    getRear(){
+        if(this.isEmpty()){
+            console.log("queue is empty")
+            return 
+        }
+        console.log("Rear",this.queue[this.rear])
+    }
+}
+const out = new circularqueue(3)
+out.enqueue(10)
+out.enqueue(20)
+out.enqueue(30)
+console.log(out.isFull())
+console.log(out.isEmpty())
+out.getFront()
+out.getRear()
+out.dequeue(30)
+console.log(out.isFull())
+console.log(out.isEmpty())
+
+
+//enqueue(10) → [10, _, _]  front=0, rear=0  
+// enqueue(20) → [10, 20, _] front=0, rear=1  
+// enqueue(30) → [10, 20, 30] front=0, rear=2  
+// dequeue()   → [_, 20, 30]  front=1, rear=2  
+// enqueue(40) → [40, 20, 30] front=1, rear=0  (wraps around)
