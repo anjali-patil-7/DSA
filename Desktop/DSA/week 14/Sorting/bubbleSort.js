@@ -11,6 +11,28 @@ function bubblesort(arr) {
 }
 console.log(bubblesort([3, 4, 5, 2, 1]));
 
+
+
+/////---------------------sort the array and get or remove mul of 2
+let arr = [9, 8, 7, 5, 6, 4, 3, 2];
+function bla(arr) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = 0; j < arr.length - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      }
+    }
+  }
+  let out = [];
+  for (let k = 0; k <= arr.length; k++) {
+    if (arr[k] % 2 === 0) {
+      out.push(arr[k]);
+    }
+  }
+  return out;
+}
+console.log(bla(arr));
+
 //1............sorting in descending order
 function descending(arr) {
   for (let i = 0; i < arr.length - 1; i++) {

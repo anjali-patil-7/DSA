@@ -22,5 +22,18 @@ function longestConsecutiveRepeating(str) {
 console.log(longestConsecutiveRepeating("aaabbcdefffffffffffffffffffffff"));          //{ substring: 'fffffffffffffffffffffff', length: 23 }
 
 
+///2.........................find all the numbers disappered in the array
+
+var findDisappearedNumbers = function (nums) {
+  let result = [];
+  let val = new Set(nums);
+  for (let i = 1; i <= nums.length; i++) {
+    if (!val.has(i)) {
+      result.push(i);
+    }
+  }
+  return result;
+};
+
 
 

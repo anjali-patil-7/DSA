@@ -1,66 +1,75 @@
 //1******************************************************Implementations of bst
 class Node {
-  constructor(value) {
-    this.value = value;
-    this.left = null;
-    this.right = null;
-  }
+    constructor(value) {
+        this.value = value
+        this.left = null
+        this.right = null
+    }
 }
-class BinarysearchTree {
-  constructor() {
-    this.root = null;
-  }
-  //check isEmpty
-  isEmpty() {
-    return this.root === null;
-  }
-  //.................insert value
-  insert(value) {
-    const newNode = new Node(value);
-    if (this.isEmpty()) {
-      this.root = newNode;
-    } else {
-      this.insertNode(this.root, newNode);
+
+class bst {
+    constructor() {
+        this.root = null
     }
-  }
-  insertNode(root, newNode) {
-    if (newNode.value < root.value) {
-      if (root.left === null) {
-        root.left = newNode;
-      } else {
-        this.insertNode(root.left, newNode);
-      }
-    } else {
-      if (root.right === null) {
-        root.right = newNode;
-      } else {
-        this.insertNode(root.right, newNode);
-      }
+
+    isEmpty() {
+        return this.root === null
     }
-  }
-///......................search values
-  search(root, value) {
-    if (!root) {
-      return false;
-    } else {
-      if (root.value === value) {
-        return true;
-      } else if (value < root.value) {
-        return this.search(root.left, value);
-      } else {
-        return this.search(root.right, value);
-      }
+
+    insert(value) {
+        let newnode = new Node(value)
+        if (this.isEmpty()) {
+            this.root = newnode
+        } else {
+            this.insertnode(this.root, newnode)
+        }
     }
-  }
+
+    insertnode(root, newnode) {
+        if (newnode.value === root.value) {
+            // prevent duplicates
+            return
+        } else if (newnode.value < root.value) {
+            if (root.left === null) {
+                root.left = newnode
+            } else {
+                this.insertnode(root.left, newnode)
+            }
+        } else {
+            if (root.right === null) {
+                root.right = newnode
+            } else {
+                this.insertnode(root.right, newnode)
+            }
+        }
+    }
+
+    search(root, value) {
+        if (!root) {
+            return false
+        }
+        if (root.value === value) {
+            return true
+        } else if (value < root.value) {
+            return this.search(root.left, value)
+        } else {
+            return this.search(root.right, value)
+        }
+    }
 }
-const bst = new BinarysearchTree();
-console.log("tree is empty? ", bst.isEmpty());
-bst.insert(10);
-bst.insert(5);
-bst.insert(15);
-console.log(bst.search(bst.root, 10));
-console.log(bst.search(bst.root, 5));
-console.log(bst.search(bst.root, 15));
+
+// Test
+const out = new bst()
+out.insert(10)
+out.insert(5)
+out.insert(15)
+out.insert(10) // duplicate, ignored
+
+console.log(out.search(out.root, 10)) // true
+console.log(out.search(out.root, 5))  // true
+console.log(out.search(out.root, 15)) // true
+console.log(out.search(out.root, 20)) // false
+
 
 
 
@@ -112,6 +121,31 @@ out.postorder(out.root)
     }
     //out
     out.levelorder()
+
+    levelorder() {
+    const queue = [], res = []
+    if (!this.root) return res
+    
+    queue.push(this.root)
+
+    while (queue.length) {
+        let levelSize = queue.length   // number of nodes in this level
+        let level = []                 // store current level values
+
+        for (let i = 0; i < levelSize; i++) {
+            let curr = queue.shift()
+            level.push(curr.value)
+
+            if (curr.left) queue.push(curr.left)
+            if (curr.right) queue.push(curr.right)
+        }
+
+        res.push(level)  // push current level into result
+    }
+
+    return res
+}
+
 
     //*************MAX AND MIN OF THE NODE */
       min(root){
